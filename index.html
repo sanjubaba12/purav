@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purav Jha | Official Portfolio</title>
+    <link rel="shortcut icon" href="yes/image_0.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #ff0000;
+        --bg-dark: #0a0a0a;
+        --bg-card: #161616;
+        --text-main: #ffffff;
+        --text-dim: #b3b3b3;
+        --glass: rgba(255, 255, 255, 0.05);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* --- Navbar --- */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .logo-img {
+        height: 40px; /* Adjust height as needed */
+        margin-right: 10px;
+        border-radius: 50%; /* Optional: round the logo */
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .logo-text span {
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&q=80&w=1920")
+            no-repeat center center/cover;
+        padding: 0 10%;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 10vw, 6rem);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        line-height: 0.9;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--text-dim);
+        max-width: 700px;
+        margin-bottom: 2.5rem;
+      }
+
+      .cta-group {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn {
+        padding: 1.2rem 2.5rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        text-transform: uppercase;
+        cursor: pointer;
+        letter-spacing: 1px;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        border: none;
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+      }
+
+      .btn-outline {
+        border: 2px solid #fff;
+        color: white;
+      }
+      .btn-outline:hover {
+        background: white;
+        color: black;
+      }
+
+      /* --- Sections General --- */
+      section {
+        padding: 8rem 10%;
+      }
+      h2 {
+        font-size: 3rem;
+        margin-bottom: 4rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+      }
+      h2 span {
+        color: var(--primary);
+      }
+
+      /* --- Video Grid --- */
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .video-card {
+        background: var(--bg-card);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: var(--transition);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .video-card:hover {
+        transform: scale(1.03);
+      }
+
+      .video-thumb {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .video-thumb::after {
+        content: "\f04b";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        color: rgba(255, 255, 255, 0.8);
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .video-card:hover .video-thumb::after {
+        opacity: 1;
+      }
+
+      .video-info {
+        padding: 1.5rem;
+      }
+      .video-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: #fff;
+        height: 3em;
+        overflow: hidden;
+      }
+
+      /* --- About Section --- */
+      .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+
+      .stat-box {
+        background: #111;
+        padding: 2.5rem;
+        border-left: 4px solid var(--primary);
+        margin-bottom: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .stat-box:hover {
+        background: #1a1a1a;
+      }
+      .stat-box span {
+        display: block;
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: var(--primary);
+      }
+
+      /* --- Contact Form --- */
+      .contact-form {
+        max-width: 800px;
+        margin: 0 auto;
+        background: var(--bg-card);
+        padding: 4rem;
+        border-radius: 8px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 1.2rem;
+        background: #222;
+        border: 1px solid #333;
+        color: white;
+        font-family: inherit;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: var(--primary);
+        outline: none;
+      }
+
+      /* --- Footer --- */
+      footer {
+        padding: 5rem 10%;
+        text-align: center;
+        background: #050505;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+      .social-links a {
+        color: white;
+        font-size: 2rem;
+        transition: var(--transition);
+      }
+      .social-links a:hover {
+        color: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      /* --- Mobile Responsiveness --- */
+      @media (max-width: 992px) {
+        .about-container {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        section {
+          padding: 5rem 5%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: #0a0a0a;
+          padding: 2rem;
+          border-bottom: 1px solid #333;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .hamburger {
+          display: block;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-container" onclick="window.scrollTo(0, 0)">
+        <img src="yes/image_0.png" alt="Purav Jha Logo" class="logo-img" />
+        <div class="logo-text">Purav<span>Jha</span></div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#videos">Latest Content</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="menuBtn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <section class="hero" id="home">
+      <h1>
+        UNFILTERED <br /><span style="color: var(--primary)"
+          >ENTERTAINMENT</span
+        >
+      </h1>
+      <p>
+        Witness the journey of Purav Jha—where high-octane comedy meets
+        cinematic storytelling. 4 Million strong and just getting started.
+      </p>
+      <div class="cta-group">
+        <a
+          href="https://www.youtube.com/channel/UCKxvc8h4kb11SjGXaXXQuRA?sub_confirmation=1"
+          target="_blank"
+          class="btn btn-primary"
+          >Join the Squad</a
+        >
+        <a href="#videos" class="btn btn-outline">Explore Videos</a>
+      </div>
+    </section>
+
+    <section id="videos">
+      <h2>Fresh <span>Uploads</span></h2>
+      <div class="video-grid" id="videoFeed">
+        <p style="text-align: center; grid-column: 1/-1">
+          Connecting to YouTube API...
+        </p>
+      </div>
+    </section>
+
+    <section id="about" style="background: #0f0f0f">
+      <div class="about-container">
+        <div class="about-text">
+          <h2>The <span>Creator</span></h2>
+          <p>
+            Purav Jha is a digital powerhouse known for redefining sketch comedy
+            in India. With a background in theater and a flair for character
+            acting, he has built a massive community centered around relatable
+            humor and high-production value entertainment.
+          </p>
+          <br />
+          <p>
+            Starting with small viral clips, he has evolved into a full-scale
+            entertainer, collaborating with the biggest names in the industry
+            while staying true to his unique voice.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <span id="subCount">4.2M+</span>
+            <p>Subscribers on YouTube</p>
+          </div>
+          <div class="stat-box">
+            <span id="viewCount">650M+</span>
+            <p>Total Channel Views</p>
+          </div>
+          <div class="stat-box">
+            <span id="instCount">1.5M+</span>
+            <p>Instagram Followers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Work <span>With Me</span></h2>
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-row">
+            <input type="text" placeholder="Full Name" required />
+            <input type="email" placeholder="Business Email" required />
+          </div>
+          <input
+            type="text"
+            placeholder="Subject"
+            style="margin-bottom: 1rem"
+          />
+          <textarea rows="6" placeholder="Project Details" required></textarea>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; margin-top: 2rem"
+          >
+            Send Inquiry
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.instagram.com/puravjha" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a
+          href="https://www.youtube.com/channel/UCKxvc8h4kb11SjGXaXXQuRA"
+          target="_blank"
+          ><i class="fab fa-youtube"></i
+        ></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+      </div>
+      <p>&copy; 2026 Purav Jha Entertainment. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      // --- Navigation Toggle ---
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close menu when a link is clicked
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // --- Fetch YouTube Videos via RSS2JSON ---
+      async function fetchYouTubeFeed() {
+        const channelId = "UCKxvc8h4kb11SjGXaXXQuRA";
+        // Added a cache-busting timestamp to the URL
+        const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+        const apiEndpoint = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&t=${Date.now()}`;
+
+        const container = document.getElementById("videoFeed");
+
+        try {
+          const response = await fetch(apiEndpoint);
+          const data = await response.json();
+
+          if (data.status === "ok" && data.items.length > 0) {
+            container.innerHTML = ""; // Clear loading text
+
+            data.items.slice(0, 3).forEach((item) => {
+              // Extract ID from the GUID or link
+              const videoId =
+                item.guid.split(":").pop() || item.link.split("v=")[1];
+
+              const card = document.createElement("div");
+              card.className = "video-card";
+              card.innerHTML = `
+                            <a href="${item.link}" target="_blank" style="text-decoration:none; color:inherit;">
+                                <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/${videoId}/mqdefault.jpg')"></div>
+                                <div class="video-info">
+                                    <h3>${item.title}</h3>
+                                    <span style="color:var(--primary); font-weight:bold; font-size:0.8rem;">WATCH VIDEO <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        `;
+              container.appendChild(card);
+            });
+          } else {
+            throw new Error("Invalid feed data");
+          }
+        } catch (err) {
+          console.error("Feed Error:", err);
+          container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center;">
+                        <p>Feed currently unavailable. 🎬</p>
+                        <a href="https://www.youtube.com/channel/UCKxvc8h4kb11SjGXaXXQuRA" target="_blank" class="btn btn-primary" style="margin-top:20px; display:inline-block;">Go to Channel</a>
+                    </div>
+                `;
+        }
+      }
+
+      // --- Form Handler ---
+      document.getElementById("contactForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Message received! Purav's team will contact you shortly.");
+        e.target.reset();
+      });
+
+      // Initialize on load
+      window.addEventListener("DOMContentLoaded", fetchYouTubeFeed);
+    </script>
+  </body>
+</html>
